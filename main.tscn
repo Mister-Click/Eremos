@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddygnkehjgtq7"]
+[gd_scene load_steps=16 format=3 uid="uid://yqd5d1p8vmef"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f6ko0"]
 size = Vector2(2048, 2048)
@@ -11,16 +11,16 @@ alpha_hash_scale = 0.96
 alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 1.0
 diffuse_mode = 2
-specular_mode = 1
+specular_mode = 2
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_color = Color(0.690196, 1, 1, 1)
-metallic = 0.57
-metallic_specular = 0.62
-roughness = 0.58
+metallic = 0.9
+metallic_specular = 0.74
+roughness = 0.93
 clearcoat_enabled = true
-clearcoat = 0.55
-clearcoat_roughness = 0.17
+clearcoat = 0.39
+clearcoat_roughness = 0.65
 anisotropy = -0.22
 ao_enabled = true
 ao_light_affect = 0.24
@@ -32,13 +32,14 @@ texture_repeat = false
 disable_receive_shadows = true
 billboard_keep_scale = true
 grow = true
-grow_amount = -1.0
+grow_amount = -0.552018
 use_point_size = true
-point_size = 3.4
-proximity_fade_distance = 0.07
+point_size = 0.0
+use_particle_trails = true
+proximity_fade_enabled = true
+proximity_fade_distance = 0.32
 msdf_pixel_range = 1.0
-distance_fade_mode = 3
-distance_fade_max_distance = 3.3
+distance_fade_max_distance = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n5th"]
 
@@ -74,7 +75,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_epi08")
 
 [sub_resource type="Animation" id="Animation_1c7vt"]
-length = 0.001
+length = 9.0
+loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,9 +84,9 @@ tracks/0/path = NodePath("Moon2:material_override:grow_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -93,42 +95,21 @@ tracks/1/path = NodePath("Moon2:material_override:point_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(2.4, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0, 2.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 9)
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position:x")
+tracks/2/path = NodePath("Moon2:material_override:proximity_fade_enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:position:z")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_sl4ud"]
@@ -143,18 +124,18 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9)
+"times": PackedFloat32Array(0, 8.9)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Moon2:material_override:point_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(2.4, -0.25, 0, 0.25, 0, 58, -0.25, 0, 0.25, 0, 2.4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 8.3, 9)
+"points": PackedFloat32Array(4.4, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 2.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 8.9)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -165,7 +146,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9)
+"times": PackedFloat32Array(0, 8.9)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -176,7 +157,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9)
+"times": PackedFloat32Array(0, 8.9)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -187,19 +168,31 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-0.865, -0.25, 0, 0.25, 0, -2.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 9)
+"times": PackedFloat32Array(0, 8.9)
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer2:speed_scale")
+tracks/5/path = NodePath("AnimationPlayer:speed_scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 6.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.8, 5.8, 8),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
 "update": 0,
-"values": [1.0, 0.1]
+"values": [3.0, 1.75556, 1.266, 0.2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Moon2:material_override:proximity_fade_enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wxqp3"]
@@ -209,7 +202,8 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_ikjgo"]
-length = 0.001
+length = 9.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -217,15 +211,16 @@ tracks/0/path = NodePath("Moon2:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 0.420448),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_iujbn"]
 resource_name = "rotate"
 length = 9.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -245,10 +240,46 @@ _data = {
 "rotate": SubResource("Animation_iujbn")
 }
 
+[sub_resource type="Animation" id="Animation_dkwfa"]
+resource_name = "new_animation"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon2:material_override:point_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.5, 9, 10)
+}
+
+[sub_resource type="Animation" id="Animation_5gv6g"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon2:material_override:point_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_noyty"]
+_data = {
+"RESET": SubResource("Animation_5gv6g"),
+"new_animation": SubResource("Animation_dkwfa")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.865)
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.41826)
 fov = 68.5
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -258,36 +289,35 @@ transparent = false
 texture = SubResource("PlaceholderTexture2D_f6ko0")
 
 [node name="Moon2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.00108, 0, 0, 0, 1, 0, 0, 0, 1.00108, 0, 0, 0)
+transform = Transform3D(-0.939693, 0, 0.342018, 0, 1, 0, -0.342018, 0, -0.939693, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_cpy4f")
 mesh = SubResource("ArrayMesh_cq8j2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.989523, 0.092128, -0.111158, -5.57865e-08, 0.769934, 0.638123, 0.144374, 0.631438, -0.761868, 0, 1.66256, -5.15998)
-light_color = Color(0.92614, 0.973395, 0.911121, 1)
-light_energy = 1.095
+light_color = Color(0.92549, 0.972549, 0.823529, 1)
+light_energy = 2.714
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 16.82
-directional_shadow_split_1 = 0.125
-directional_shadow_split_2 = 0.109
-directional_shadow_split_3 = 0.338
-directional_shadow_blend_splits = true
-directional_shadow_fade_start = 0.245
-directional_shadow_max_distance = 26.7
-directional_shadow_pancake_size = 23.0
-sky_mode = 1
+light_angular_distance = 17.36
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="."]
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_wxqp3")
 }
 autoplay = "point_size"
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_j3iyj")
 }
 autoplay = "rotate"
+speed_scale = 1.46427
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_noyty")
+}
+autoplay = "new_animation"
