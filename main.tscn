@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://yqd5d1p8vmef"]
+[gd_scene load_steps=16 format=3 uid="uid://2jo2o3l3rdht"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f6ko0"]
 size = Vector2(2048, 2048)
@@ -289,7 +289,6 @@ transparent = false
 texture = SubResource("PlaceholderTexture2D_f6ko0")
 
 [node name="Moon2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_cpy4f")
 mesh = SubResource("ArrayMesh_cq8j2")
 
